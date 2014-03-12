@@ -3,7 +3,7 @@
 
 using namespace std;
 namespace SimplePcapNs {
- 
+
     SimplePcap::~SimplePcap()
     {
         if (handle != NULL) {
@@ -81,11 +81,10 @@ namespace SimplePcapNs {
             pcap_close(handle);
             throw FilterException(filterString, errorString);
         }
-        if (pcap_setfilter(handle, &fp) == -1) {
+        iif (pcap_setfilter(handle, &fp) == -1) {
             string errorString = string(pcap_geterr(handle));
             pcap_close(handle);
             throw FilterException(filterString, errorString);
         }
     }
 }
-
